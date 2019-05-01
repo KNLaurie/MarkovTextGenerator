@@ -48,7 +48,7 @@ def make_string(rule, length):
             return string
     return string
 
-data = read('~/MarkovTextGen/data/alice.txt')
+data = read('~/MarkovTextGenerator/data/alice.txt')
 rule = make_rule(data, 5)
 
 for i in range(5):
