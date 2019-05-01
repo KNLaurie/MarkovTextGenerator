@@ -51,8 +51,7 @@ def make_string(rule, length):
 
 if __name__ == '__main__':
     data = read('~/alice.txt')
-    data.append('~/curry.txt')
-    data.append('~/election.txt')
+    data += read('~/jungle.txt')
     rule = make_rule(data, 2)
     string = make_string(rule, 30)
     print(string)
