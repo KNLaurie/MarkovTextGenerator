@@ -50,9 +50,9 @@ def make_string(rule, length):
 
 
 if __name__ == '__main__':
-    data = read('/home/kaitlyn/alice.txt')
-    data.append('/home/kaitlyn/curry.txt')
-    data.append('/home/kaitlyn/election.txt')
+    data = read('~/alice.txt')
+    data.append('~/curry.txt')
+    data.append('~/election.txt')
     rule = make_rule(data, 2)
     string = make_string(rule, 30)
     print(string)
