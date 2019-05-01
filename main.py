@@ -48,12 +48,11 @@ def make_string(rule, length):
             return string
     return string
 
+data = read('~/MarkovTextGen/data/alice.txt')
+rule = make_rule(data, 5)
 
-if __name__ == '__main__':
-    data = read('~/alice.txt')
-    data += read('~/jungle.txt')
-    rule = make_rule(data, 2)
-    string = make_string(rule, 30)
+for i in range(5):
+    string = make_string(rule, 20)
+    print(i + 1)
     print(string)
-
 
