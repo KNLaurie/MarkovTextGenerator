@@ -11,48 +11,47 @@ def read(file):
 def make_rule(data, context):
 
     rule = {}
-    words = data.split(' ')
     index = context
 
-    for word in words[index:]:
-        key = ' '.join(words[index-context:index])
-        print(words[index-context:index])
+    for char in data[index:]:
+        key = data[index-context:index]
+        
         if key in rule:
-            rule[key].append(word)
+            rule[key].append(char)
 
         else:
-            rule[key] = [word]
+            rule[key] = [char]
+
 
         index += 1
-
     return rule
 
 
 def make_string(rule, length):
 
-    old_words = random.choice(list(rule.keys())).split(' ')
-    string = ' '.join(old_words)
+    old_chars = random.choice(list(rule.keys()))
+    print(old_chars)
+    string = old_chars
+    
 
     for i in range(length):
         try:
-            key = ' '.join(old_words)
-            new_word = random.choice(rule[key])
-            string += new_word + ' '
+            key = old_chars
+            new_char = random.choice(rule[key])
+            string += new_char
 
-            for word in range(len(old_words)):
-                old_words[word] = old_words[(word + 1) % len(old_words)]
-
-            old_words[-1] = new_word
+            old_chars = old_chars[1:] + new_char
 
         except KeyError:
             return string
     return string
 
-data = read('~/MarkovTextGenerator/data/alice.txt')
-rule = make_rule(data, 5)
+data = read('../MarkovTextGenerator/data/alice.txt')
+rule = make_rule(data, 10)
 
 for i in range(5):
-    string = make_string(rule, 20)
+    string = make_string(rule, 50)
     print(i + 1)
     print(string)
+
 
