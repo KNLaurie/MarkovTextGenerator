@@ -52,9 +52,7 @@ def make_string(rule, length):
 data = read('../MarkovTextGenerator/data/alice.txt')
 rule = make_rule(data, 10)
 
-for i in range(5):
-    string = make_string(rule, 50)
-    print(i + 1)
-    print(string)
+string = make_string(rule, 50)
+print(string)
 
 
