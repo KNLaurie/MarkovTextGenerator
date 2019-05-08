@@ -13,14 +13,14 @@ def make_rule(data, context):
     rule = {}
     index = context
 
-    for char in data[index:]:
+    for c in data[index:]:
         key = data[index-context:index]
         
         if key in rule:
-            rule[key].append(char)
+            rule[key].append(c)
 
         else:
-            rule[key] = [char]
+            rule[key] = [c]
 
 
         index += 1
@@ -28,19 +28,22 @@ def make_rule(data, context):
 
 
 def make_string(rule, length):
-
-    old_chars = random.choice(list(rule.keys()))
-    print(old_chars)
-    string = old_chars
+    
+    old_characters = random.choice(list(rule.keys()))
+    
+    while old_characters.isupper() == False:
+        old_characters = random.choice(list(rule.keys()))
+        
+    string = old_characters
     
 
     for i in range(length):
         try:
-            key = old_chars
-            new_char = random.choice(rule[key])
-            string += new_char
+            key = old_characters
+            new_character = random.choice(rule[key])
+            string += new_character
 
-            old_chars = old_chars[1:] + new_char
+            old_characters = old_characters[1:] + new_character
 
         except KeyError:
             return string
